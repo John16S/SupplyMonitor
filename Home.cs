@@ -66,16 +66,5 @@ namespace SupplyMonitor
         {
             RecalculateTotalPrice();
         }
-
-        private void totalPriceTextBox_TextChanged(object sender, EventArgs e)
-        {
-            
-        }
-
-
-        private void priceTextBox_Leave(object sender, EventArgs e)
-        {
-            
-        }
     }
 }

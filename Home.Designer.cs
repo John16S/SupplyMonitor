@@ -28,6 +28,8 @@
         /// </summary>
         private void InitializeComponent()
         {
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(Home));
             this.tableLayoutPanel1 = new System.Windows.Forms.TableLayoutPanel();
             this.panel1 = new System.Windows.Forms.Panel();
@@ -53,6 +55,14 @@
             this.label3 = new System.Windows.Forms.Label();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.dataGridView1 = new System.Windows.Forms.DataGridView();
+            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.FruitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
+            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -63,6 +73,7 @@
             this.tableLayoutPanel7.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amountNumericUpDown)).BeginInit();
             this.tableLayoutPanel6.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).BeginInit();
             this.SuspendLayout();
             // 
             // tableLayoutPanel1
@@ -77,7 +88,7 @@
             this.tableLayoutPanel1.RowCount = 2;
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 10.50081F));
             this.tableLayoutPanel1.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 89.49919F));
-            this.tableLayoutPanel1.Size = new System.Drawing.Size(1343, 657);
+            this.tableLayoutPanel1.Size = new System.Drawing.Size(1402, 657);
             this.tableLayoutPanel1.TabIndex = 0;
             // 
             // panel1
@@ -87,7 +98,7 @@
             this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel1.Location = new System.Drawing.Point(3, 3);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1337, 62);
+            this.panel1.Size = new System.Drawing.Size(1396, 62);
             this.panel1.TabIndex = 1;
             // 
             // SupplyMonitor
@@ -97,7 +108,7 @@
             this.SupplyMonitor.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.SupplyMonitor.Location = new System.Drawing.Point(0, 0);
             this.SupplyMonitor.Name = "SupplyMonitor";
-            this.SupplyMonitor.Size = new System.Drawing.Size(1337, 62);
+            this.SupplyMonitor.Size = new System.Drawing.Size(1396, 62);
             this.SupplyMonitor.TabIndex = 2;
             this.SupplyMonitor.Text = "Supply Monitor";
             this.SupplyMonitor.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
@@ -109,7 +120,7 @@
             this.panel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel2.Location = new System.Drawing.Point(3, 71);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(1337, 583);
+            this.panel2.Size = new System.Drawing.Size(1396, 583);
             this.panel2.TabIndex = 2;
             // 
             // tableLayoutPanel2
@@ -119,13 +130,15 @@
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 23.03665F));
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel3, 1, 1);
             this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel5, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.dataGridView1, 0, 1);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
             this.tableLayoutPanel2.RowCount = 2;
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 16.8096F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 83.19039F));
-            this.tableLayoutPanel2.Size = new System.Drawing.Size(1337, 583);
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
+            this.tableLayoutPanel2.Size = new System.Drawing.Size(1396, 583);
             this.tableLayoutPanel2.TabIndex = 0;
             // 
             // tableLayoutPanel3
@@ -134,12 +147,12 @@
             this.tableLayoutPanel3.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.Controls.Add(this.tableLayoutPanel4, 0, 0);
             this.tableLayoutPanel3.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.tableLayoutPanel3.Location = new System.Drawing.Point(1032, 100);
+            this.tableLayoutPanel3.Location = new System.Drawing.Point(1077, 100);
             this.tableLayoutPanel3.Name = "tableLayoutPanel3";
             this.tableLayoutPanel3.RowCount = 2;
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
             this.tableLayoutPanel3.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 50F));
-            this.tableLayoutPanel3.Size = new System.Drawing.Size(302, 480);
+            this.tableLayoutPanel3.Size = new System.Drawing.Size(316, 480);
             this.tableLayoutPanel3.TabIndex = 0;
             // 
             // tableLayoutPanel4
@@ -162,7 +175,7 @@
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
             this.tableLayoutPanel4.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 20F));
-            this.tableLayoutPanel4.Size = new System.Drawing.Size(296, 234);
+            this.tableLayoutPanel4.Size = new System.Drawing.Size(310, 234);
             this.tableLayoutPanel4.TabIndex = 0;
             // 
             // addToCartBtn
@@ -173,7 +186,7 @@
             this.addToCartBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.addToCartBtn.Location = new System.Drawing.Point(3, 3);
             this.addToCartBtn.Name = "addToCartBtn";
-            this.addToCartBtn.Size = new System.Drawing.Size(290, 52);
+            this.addToCartBtn.Size = new System.Drawing.Size(304, 52);
             this.addToCartBtn.TabIndex = 0;
             this.addToCartBtn.Text = "Добавить в корзину";
             this.addToCartBtn.UseVisualStyleBackColor = false;
@@ -186,7 +199,7 @@
             this.orderBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.orderBtn.Location = new System.Drawing.Point(3, 61);
             this.orderBtn.Name = "orderBtn";
-            this.orderBtn.Size = new System.Drawing.Size(290, 52);
+            this.orderBtn.Size = new System.Drawing.Size(304, 52);
             this.orderBtn.TabIndex = 0;
             this.orderBtn.Text = "Заказать";
             this.orderBtn.UseVisualStyleBackColor = false;
@@ -199,7 +212,7 @@
             this.reportBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.reportBtn.Location = new System.Drawing.Point(3, 119);
             this.reportBtn.Name = "reportBtn";
-            this.reportBtn.Size = new System.Drawing.Size(290, 52);
+            this.reportBtn.Size = new System.Drawing.Size(304, 52);
             this.reportBtn.TabIndex = 0;
             this.reportBtn.Text = "Оформить отчёт";
             this.reportBtn.UseVisualStyleBackColor = false;
@@ -212,7 +225,7 @@
             this.exitBtn.ForeColor = System.Drawing.SystemColors.ButtonFace;
             this.exitBtn.Location = new System.Drawing.Point(3, 177);
             this.exitBtn.Name = "exitBtn";
-            this.exitBtn.Size = new System.Drawing.Size(290, 54);
+            this.exitBtn.Size = new System.Drawing.Size(304, 54);
             this.exitBtn.TabIndex = 0;
             this.exitBtn.Text = "Выход";
             this.exitBtn.UseVisualStyleBackColor = false;
@@ -229,7 +242,7 @@
             this.tableLayoutPanel5.RowCount = 2;
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 41.17647F));
             this.tableLayoutPanel5.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 58.82353F));
-            this.tableLayoutPanel5.Size = new System.Drawing.Size(1023, 91);
+            this.tableLayoutPanel5.Size = new System.Drawing.Size(1068, 91);
             this.tableLayoutPanel5.TabIndex = 1;
             // 
             // tableLayoutPanel7
@@ -250,31 +263,30 @@
             this.tableLayoutPanel7.Name = "tableLayoutPanel7";
             this.tableLayoutPanel7.RowCount = 1;
             this.tableLayoutPanel7.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel7.Size = new System.Drawing.Size(1017, 48);
+            this.tableLayoutPanel7.Size = new System.Drawing.Size(1062, 48);
             this.tableLayoutPanel7.TabIndex = 4;
             // 
             // totalPriceTextBox
             // 
             this.totalPriceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.totalPriceTextBox.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.totalPriceTextBox.Location = new System.Drawing.Point(809, 3);
+            this.totalPriceTextBox.Location = new System.Drawing.Point(845, 3);
             this.totalPriceTextBox.Name = "totalPriceTextBox";
-            this.totalPriceTextBox.Size = new System.Drawing.Size(205, 34);
+            this.totalPriceTextBox.Size = new System.Drawing.Size(214, 34);
             this.totalPriceTextBox.TabIndex = 5;
-            this.totalPriceTextBox.TextChanged += new System.EventHandler(this.totalPriceTextBox_TextChanged);
             // 
             // amountNumericUpDown
             // 
             this.amountNumericUpDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.amountNumericUpDown.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.amountNumericUpDown.Location = new System.Drawing.Point(696, 3);
+            this.amountNumericUpDown.Location = new System.Drawing.Point(727, 3);
             this.amountNumericUpDown.Maximum = new decimal(new int[] {
             1000,
             0,
             0,
             0});
             this.amountNumericUpDown.Name = "amountNumericUpDown";
-            this.amountNumericUpDown.Size = new System.Drawing.Size(107, 34);
+            this.amountNumericUpDown.Size = new System.Drawing.Size(112, 34);
             this.amountNumericUpDown.TabIndex = 4;
             this.amountNumericUpDown.ValueChanged += new System.EventHandler(this.amountNumericUpDown_ValueChanged);
             // 
@@ -284,9 +296,9 @@
             this.typeOfFriutBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.typeOfFriutBox.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeOfFriutBox.FormattingEnabled = true;
-            this.typeOfFriutBox.Location = new System.Drawing.Point(293, 3);
+            this.typeOfFriutBox.Location = new System.Drawing.Point(306, 3);
             this.typeOfFriutBox.Name = "typeOfFriutBox";
-            this.typeOfFriutBox.Size = new System.Drawing.Size(284, 34);
+            this.typeOfFriutBox.Size = new System.Drawing.Size(297, 34);
             this.typeOfFriutBox.TabIndex = 2;
             // 
             // supplierBox
@@ -297,19 +309,18 @@
             this.supplierBox.FormattingEnabled = true;
             this.supplierBox.Location = new System.Drawing.Point(3, 3);
             this.supplierBox.Name = "supplierBox";
-            this.supplierBox.Size = new System.Drawing.Size(284, 34);
+            this.supplierBox.Size = new System.Drawing.Size(297, 34);
             this.supplierBox.TabIndex = 1;
             // 
             // priceTextBox
             // 
             this.priceTextBox.Dock = System.Windows.Forms.DockStyle.Fill;
             this.priceTextBox.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.priceTextBox.Location = new System.Drawing.Point(583, 3);
+            this.priceTextBox.Location = new System.Drawing.Point(609, 3);
             this.priceTextBox.Name = "priceTextBox";
-            this.priceTextBox.Size = new System.Drawing.Size(107, 34);
+            this.priceTextBox.Size = new System.Drawing.Size(112, 34);
             this.priceTextBox.TabIndex = 3;
             this.priceTextBox.TextChanged += new System.EventHandler(this.priceTextBox_TextChanged);
-            this.priceTextBox.Leave += new System.EventHandler(this.priceTextBox_Leave);
             // 
             // tableLayoutPanel6
             // 
@@ -329,16 +340,16 @@
             this.tableLayoutPanel6.Name = "tableLayoutPanel6";
             this.tableLayoutPanel6.RowCount = 1;
             this.tableLayoutPanel6.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel6.Size = new System.Drawing.Size(1017, 31);
+            this.tableLayoutPanel6.Size = new System.Drawing.Size(1062, 31);
             this.tableLayoutPanel6.TabIndex = 3;
             // 
             // label5
             // 
             this.label5.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label5.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label5.Location = new System.Drawing.Point(696, 0);
+            this.label5.Location = new System.Drawing.Point(727, 0);
             this.label5.Name = "label5";
-            this.label5.Size = new System.Drawing.Size(107, 31);
+            this.label5.Size = new System.Drawing.Size(112, 31);
             this.label5.TabIndex = 5;
             this.label5.Text = "Кол-во:";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -347,9 +358,9 @@
             // 
             this.label4.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label4.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label4.Location = new System.Drawing.Point(809, 0);
+            this.label4.Location = new System.Drawing.Point(845, 0);
             this.label4.Name = "label4";
-            this.label4.Size = new System.Drawing.Size(205, 31);
+            this.label4.Size = new System.Drawing.Size(214, 31);
             this.label4.TabIndex = 4;
             this.label4.Text = "Общая сумма:";
             this.label4.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -358,9 +369,9 @@
             // 
             this.label3.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label3.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(583, 0);
+            this.label3.Location = new System.Drawing.Point(609, 0);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(107, 31);
+            this.label3.Size = new System.Drawing.Size(112, 31);
             this.label3.TabIndex = 3;
             this.label3.Text = "Цена:";
             this.label3.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -371,7 +382,7 @@
             this.label2.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.label2.Location = new System.Drawing.Point(3, 0);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(284, 31);
+            this.label2.Size = new System.Drawing.Size(297, 31);
             this.label2.TabIndex = 2;
             this.label2.Text = "Поставщик:";
             this.label2.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
@@ -380,21 +391,114 @@
             // 
             this.label1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.label1.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label1.Location = new System.Drawing.Point(293, 0);
+            this.label1.Location = new System.Drawing.Point(306, 0);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(284, 31);
+            this.label1.Size = new System.Drawing.Size(297, 31);
             this.label1.TabIndex = 1;
             this.label1.Text = "Вид фрукта:";
             this.label1.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
+            // 
+            // dataGridView1
+            // 
+            this.dataGridView1.AllowUserToAddRows = false;
+            this.dataGridView1.AllowUserToDeleteRows = false;
+            this.dataGridView1.AllowUserToResizeColumns = false;
+            this.dataGridView1.AllowUserToResizeRows = false;
+            this.dataGridView1.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle1.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle1.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle1.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle1.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle1.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
+            this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
+            this.Count,
+            this.Supplier,
+            this.FruitType,
+            this.Price,
+            this.Amount,
+            this.TotalPrice,
+            this.OrderDate});
+            this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView1.Location = new System.Drawing.Point(3, 100);
+            this.dataGridView1.Name = "dataGridView1";
+            dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
+            dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView1.RowHeadersDefaultCellStyle = dataGridViewCellStyle2;
+            this.dataGridView1.RowHeadersVisible = false;
+            this.dataGridView1.RowHeadersWidth = 51;
+            this.dataGridView1.RowTemplate.Height = 24;
+            this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView1.Size = new System.Drawing.Size(1068, 480);
+            this.dataGridView1.TabIndex = 1;
+            // 
+            // Count
+            // 
+            this.Count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
+            this.Count.FillWeight = 187.1657F;
+            this.Count.HeaderText = "№";
+            this.Count.MinimumWidth = 50;
+            this.Count.Name = "Count";
+            this.Count.Width = 50;
+            // 
+            // Supplier
+            // 
+            this.Supplier.FillWeight = 85.47237F;
+            this.Supplier.HeaderText = "Поставщик:";
+            this.Supplier.MinimumWidth = 6;
+            this.Supplier.Name = "Supplier";
+            // 
+            // FruitType
+            // 
+            this.FruitType.FillWeight = 85.47237F;
+            this.FruitType.HeaderText = "Вид фрукты:";
+            this.FruitType.MinimumWidth = 6;
+            this.FruitType.Name = "FruitType";
+            // 
+            // Price
+            // 
+            this.Price.FillWeight = 85.47237F;
+            this.Price.HeaderText = "Цена/кг";
+            this.Price.MinimumWidth = 6;
+            this.Price.Name = "Price";
+            // 
+            // Amount
+            // 
+            this.Amount.FillWeight = 85.47237F;
+            this.Amount.HeaderText = "Кол-во:";
+            this.Amount.MinimumWidth = 6;
+            this.Amount.Name = "Amount";
+            // 
+            // TotalPrice
+            // 
+            this.TotalPrice.FillWeight = 85.47237F;
+            this.TotalPrice.HeaderText = "Общая сумма:";
+            this.TotalPrice.MinimumWidth = 6;
+            this.TotalPrice.Name = "TotalPrice";
+            // 
+            // OrderDate
+            // 
+            this.OrderDate.FillWeight = 85.47237F;
+            this.OrderDate.HeaderText = "Дата заказа:";
+            this.OrderDate.MinimumWidth = 6;
+            this.OrderDate.Name = "OrderDate";
             // 
             // Home
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1343, 657);
+            this.ClientSize = new System.Drawing.Size(1402, 657);
             this.Controls.Add(this.tableLayoutPanel1);
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
-            this.MinimumSize = new System.Drawing.Size(1361, 666);
+            this.MinimumSize = new System.Drawing.Size(1420, 700);
             this.Name = "Home";
             this.Text = "Supply Monitor";
             this.tableLayoutPanel1.ResumeLayout(false);
@@ -409,6 +513,7 @@
             this.tableLayoutPanel7.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.amountNumericUpDown)).EndInit();
             this.tableLayoutPanel6.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView1)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -439,5 +544,13 @@
         private System.Windows.Forms.Button orderBtn;
         private System.Windows.Forms.Button reportBtn;
         private System.Windows.Forms.Button exitBtn;
+        private System.Windows.Forms.DataGridView dataGridView1;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
+        private System.Windows.Forms.DataGridViewTextBoxColumn FruitType;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Price;
+        private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
+        private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
+        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
     }
 }
