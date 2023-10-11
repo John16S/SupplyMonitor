@@ -56,13 +56,11 @@
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
-            this.Count = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Supplier = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.FruitType = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Price = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.Amount = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.TotalPrice = new System.Windows.Forms.DataGridViewTextBoxColumn();
-            this.OrderDate = new System.Windows.Forms.DataGridViewTextBoxColumn();
             this.tableLayoutPanel1.SuspendLayout();
             this.panel1.SuspendLayout();
             this.panel2.SuspendLayout();
@@ -190,6 +188,7 @@
             this.addToCartBtn.TabIndex = 0;
             this.addToCartBtn.Text = "Добавить в корзину";
             this.addToCartBtn.UseVisualStyleBackColor = false;
+            this.addToCartBtn.Click += new System.EventHandler(this.addToCartBtn_Click);
             // 
             // orderBtn
             // 
@@ -272,6 +271,7 @@
             this.totalPriceTextBox.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.totalPriceTextBox.Location = new System.Drawing.Point(845, 3);
             this.totalPriceTextBox.Name = "totalPriceTextBox";
+            this.totalPriceTextBox.ReadOnly = true;
             this.totalPriceTextBox.Size = new System.Drawing.Size(214, 34);
             this.totalPriceTextBox.TabIndex = 5;
             // 
@@ -293,6 +293,7 @@
             // typeOfFriutBox
             // 
             this.typeOfFriutBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.typeOfFriutBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.typeOfFriutBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.typeOfFriutBox.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.typeOfFriutBox.FormattingEnabled = true;
@@ -300,10 +301,12 @@
             this.typeOfFriutBox.Name = "typeOfFriutBox";
             this.typeOfFriutBox.Size = new System.Drawing.Size(297, 34);
             this.typeOfFriutBox.TabIndex = 2;
+            this.typeOfFriutBox.SelectedIndexChanged += new System.EventHandler(this.typeOfFriutBox_SelectedIndexChanged);
             // 
             // supplierBox
             // 
             this.supplierBox.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.supplierBox.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.supplierBox.FlatStyle = System.Windows.Forms.FlatStyle.System;
             this.supplierBox.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.supplierBox.FormattingEnabled = true;
@@ -311,6 +314,7 @@
             this.supplierBox.Name = "supplierBox";
             this.supplierBox.Size = new System.Drawing.Size(297, 34);
             this.supplierBox.TabIndex = 1;
+            this.supplierBox.SelectedIndexChanged += new System.EventHandler(this.supplierBox_SelectedIndexChanged);
             // 
             // priceTextBox
             // 
@@ -318,6 +322,7 @@
             this.priceTextBox.Font = new System.Drawing.Font("Times New Roman", 13.8F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.priceTextBox.Location = new System.Drawing.Point(609, 3);
             this.priceTextBox.Name = "priceTextBox";
+            this.priceTextBox.ReadOnly = true;
             this.priceTextBox.Size = new System.Drawing.Size(112, 34);
             this.priceTextBox.TabIndex = 3;
             this.priceTextBox.TextChanged += new System.EventHandler(this.priceTextBox_TextChanged);
@@ -351,7 +356,7 @@
             this.label5.Name = "label5";
             this.label5.Size = new System.Drawing.Size(112, 31);
             this.label5.TabIndex = 5;
-            this.label5.Text = "Кол-во:";
+            this.label5.Text = "Вес (кг):";
             this.label5.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             // 
             // label4
@@ -415,13 +420,11 @@
             this.dataGridView1.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle1;
             this.dataGridView1.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
             this.dataGridView1.Columns.AddRange(new System.Windows.Forms.DataGridViewColumn[] {
-            this.Count,
             this.Supplier,
             this.FruitType,
             this.Price,
             this.Amount,
-            this.TotalPrice,
-            this.OrderDate});
+            this.TotalPrice});
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 100);
             this.dataGridView1.Name = "dataGridView1";
@@ -439,15 +442,6 @@
             this.dataGridView1.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView1.Size = new System.Drawing.Size(1068, 480);
             this.dataGridView1.TabIndex = 1;
-            // 
-            // Count
-            // 
-            this.Count.AutoSizeMode = System.Windows.Forms.DataGridViewAutoSizeColumnMode.None;
-            this.Count.FillWeight = 187.1657F;
-            this.Count.HeaderText = "№";
-            this.Count.MinimumWidth = 50;
-            this.Count.Name = "Count";
-            this.Count.Width = 50;
             // 
             // Supplier
             // 
@@ -473,7 +467,7 @@
             // Amount
             // 
             this.Amount.FillWeight = 85.47237F;
-            this.Amount.HeaderText = "Кол-во:";
+            this.Amount.HeaderText = "Вес (кг)";
             this.Amount.MinimumWidth = 6;
             this.Amount.Name = "Amount";
             // 
@@ -483,13 +477,6 @@
             this.TotalPrice.HeaderText = "Общая сумма:";
             this.TotalPrice.MinimumWidth = 6;
             this.TotalPrice.Name = "TotalPrice";
-            // 
-            // OrderDate
-            // 
-            this.OrderDate.FillWeight = 85.47237F;
-            this.OrderDate.HeaderText = "Дата заказа:";
-            this.OrderDate.MinimumWidth = 6;
-            this.OrderDate.Name = "OrderDate";
             // 
             // Home
             // 
@@ -545,12 +532,10 @@
         private System.Windows.Forms.Button reportBtn;
         private System.Windows.Forms.Button exitBtn;
         private System.Windows.Forms.DataGridView dataGridView1;
-        private System.Windows.Forms.DataGridViewTextBoxColumn Count;
         private System.Windows.Forms.DataGridViewTextBoxColumn Supplier;
         private System.Windows.Forms.DataGridViewTextBoxColumn FruitType;
         private System.Windows.Forms.DataGridViewTextBoxColumn Price;
         private System.Windows.Forms.DataGridViewTextBoxColumn Amount;
         private System.Windows.Forms.DataGridViewTextBoxColumn TotalPrice;
-        private System.Windows.Forms.DataGridViewTextBoxColumn OrderDate;
     }
 }
