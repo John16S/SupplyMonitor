@@ -1,4 +1,5 @@
-﻿using System;
+﻿using SupplyMonitor.Models;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using static System.Windows.Forms.VisualStyles.VisualStyleElement;
 
 namespace SupplyMonitor
 {
@@ -15,6 +17,17 @@ namespace SupplyMonitor
         public Home()
         {
             InitializeComponent();
+
+            DBConnection connection = new DBConnection();
+            connection.openConnection();
+
+            List<Supplier> suppliers = connection.GetSuppliers();
+
+            foreach (Supplier supplier in suppliers)
+            {
+                supplierBox.Items.Add(supplier.Name);
+            }
+            supplierBox.SelectedIndex = 0;
         }
 
         private void RecalculateTotalPrice()
@@ -36,7 +49,7 @@ namespace SupplyMonitor
 
         private void priceTextBox_TextChanged(object sender, EventArgs e)
         {
-            TextBox textBox = (TextBox)sender;
+            /*TextBox textBox = (TextBox)sender;
 
             int selectionStart = textBox.SelectionStart;
             int selectionLength = textBox.SelectionLength;
@@ -56,7 +69,7 @@ namespace SupplyMonitor
 
             // Восстанавливаем положение курсора
             textBox.SelectionStart = selectionStart + (text.Length - textBox.Text.Length);
-            textBox.SelectionLength = selectionLength;
+            textBox.SelectionLength = selectionLength;*/
 
             RecalculateTotalPrice();
         }
