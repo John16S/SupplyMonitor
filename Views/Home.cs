@@ -2,6 +2,7 @@
 using Org.BouncyCastle.Asn1.X509;
 using SupplyMonitor.DBConnections;
 using SupplyMonitor.Models;
+using SupplyMonitor.Views;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -44,7 +45,7 @@ namespace SupplyMonitor
         private void RecalculateTotalPrice()
         {
             // Получаем текст из priceTextBox и Разделяем строку по пробелу, то есть из "120 р/кг" берем "120"
-            string priceText = CutTheCrapMadaFaka(priceTextBox);
+            string priceText = CutTheUnnecesarryPart(priceTextBox);
             
             if (priceText.Length > 0 && int.TryParse(priceText, out int price) && decimal.TryParse(amountNumericUpDown.Value.ToString(), out decimal amount))
             {
@@ -113,9 +114,9 @@ namespace SupplyMonitor
                 cart.IdSupplier = int.TryParse((supplierBox.SelectedValue.ToString()), out int idsupplier) ? idsupplier : 0;
                 cart.Fruit = typeOfFriutBox.Text;
                 cart.IdFruit = int.TryParse((typeOfFriutBox.SelectedValue.ToString()), out int idfruit) ? idfruit : 0;
-                cart.Price = int.TryParse(CutTheCrapMadaFaka(priceTextBox), out int price) ? price : 0;
+                cart.Price = int.TryParse(CutTheUnnecesarryPart(priceTextBox), out int price) ? price : 0;
                 cart.Weight = (int)amountNumericUpDown.Value;
-                cart.TotalPrice = int.TryParse(CutTheCrapMadaFaka(totalPriceTextBox), out int totalPrice) ? totalPrice : 0;
+                cart.TotalPrice = int.TryParse(CutTheUnnecesarryPart(totalPriceTextBox), out int totalPrice) ? totalPrice : 0;
                 cartList.Add(cart);
                 dataGridView1.Rows.Add(cart.Suplplier, cart.Fruit, cart.Price, cart.Weight, cart.TotalPrice);
             }
@@ -127,11 +128,11 @@ namespace SupplyMonitor
         }
 
         /// <summary>
-        /// Обрезает всю не нужную бобуйню
+        /// Обрезает всю не нужную часть
         /// </summary>
         /// <param name="textBox"></param>
         /// <returns>TextBox</returns>
-        private string CutTheCrapMadaFaka(TextBox textBox)
+        private string CutTheUnnecesarryPart(TextBox textBox)
         {
             string[] splittedText = (textBox.Text).Split(' ');
             return splittedText[0];
@@ -183,6 +184,19 @@ namespace SupplyMonitor
                     dataGridView1.Rows.Remove(selectedRow);
                 }
             }
+        }
+
+        private void reportBtn_Click(object sender, EventArgs e)
+        {
+
+            ReportPage reportPage = new ReportPage(this);
+            Hide();
+            reportPage.Show();
+        }
+
+        private void exitBtn_Click(object sender, EventArgs e)
+        {
+            Application.Exit();
         }
     }
 }

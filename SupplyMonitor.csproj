@@ -112,13 +112,15 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnections\GetOrders.cs" />
     <Compile Include="DBConnections\InsertFromCartToOrdersHistory.cs" />
     <Compile Include="DBConnections\LoadFruits.cs" />
     <Compile Include="DBConnections\LoadSuppliers.cs" />
-    <Compile Include="Home.cs">
+    <Compile Include="Models\Orders.cs" />
+    <Compile Include="Views\Home.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Home.Designer.cs">
+    <Compile Include="Views\Home.Designer.cs">
       <DependentUpon>Home.cs</DependentUpon>
     </Compile>
     <Compile Include="Models\Cart.cs" />
@@ -126,7 +128,13 @@
     <Compile Include="Models\Supplier.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <EmbeddedResource Include="Home.resx">
+    <Compile Include="Views\ReportPage.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Views\ReportPage.Designer.cs">
+      <DependentUpon>ReportPage.cs</DependentUpon>
+    </Compile>
+    <EmbeddedResource Include="Views\Home.resx">
       <DependentUpon>Home.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
@@ -138,6 +146,9 @@
       <AutoGen>True</AutoGen>
       <DependentUpon>Resources.resx</DependentUpon>
     </Compile>
+    <EmbeddedResource Include="Views\ReportPage.resx">
+      <DependentUpon>ReportPage.cs</DependentUpon>
+    </EmbeddedResource>
     <None Include="packages.config" />
     <None Include="Properties\Settings.settings">
       <Generator>SettingsSingleFileGenerator</Generator>
