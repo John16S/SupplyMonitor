@@ -202,6 +202,7 @@
             this.orderBtn.TabIndex = 0;
             this.orderBtn.Text = "Заказать";
             this.orderBtn.UseVisualStyleBackColor = false;
+            this.orderBtn.Click += new System.EventHandler(this.orderBtn_Click);
             // 
             // reportBtn
             // 
@@ -428,6 +429,7 @@
             this.dataGridView1.Dock = System.Windows.Forms.DockStyle.Fill;
             this.dataGridView1.Location = new System.Drawing.Point(3, 100);
             this.dataGridView1.Name = "dataGridView1";
+            this.dataGridView1.ReadOnly = true;
             dataGridViewCellStyle2.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleLeft;
             dataGridViewCellStyle2.BackColor = System.Drawing.SystemColors.Control;
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Times New Roman", 10.2F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
@@ -449,6 +451,7 @@
             this.Supplier.HeaderText = "Поставщик:";
             this.Supplier.MinimumWidth = 6;
             this.Supplier.Name = "Supplier";
+            this.Supplier.ReadOnly = true;
             // 
             // FruitType
             // 
@@ -456,6 +459,7 @@
             this.FruitType.HeaderText = "Вид фрукты:";
             this.FruitType.MinimumWidth = 6;
             this.FruitType.Name = "FruitType";
+            this.FruitType.ReadOnly = true;
             // 
             // Price
             // 
@@ -463,6 +467,7 @@
             this.Price.HeaderText = "Цена/кг";
             this.Price.MinimumWidth = 6;
             this.Price.Name = "Price";
+            this.Price.ReadOnly = true;
             // 
             // Amount
             // 
@@ -470,6 +475,7 @@
             this.Amount.HeaderText = "Вес (кг)";
             this.Amount.MinimumWidth = 6;
             this.Amount.Name = "Amount";
+            this.Amount.ReadOnly = true;
             // 
             // TotalPrice
             // 
@@ -477,6 +483,7 @@
             this.TotalPrice.HeaderText = "Общая сумма:";
             this.TotalPrice.MinimumWidth = 6;
             this.TotalPrice.Name = "TotalPrice";
+            this.TotalPrice.ReadOnly = true;
             // 
             // Home
             // 

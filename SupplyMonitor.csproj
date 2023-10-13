@@ -112,6 +112,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="DBConnections\InsertFromCartToOrdersHistory.cs" />
     <Compile Include="DBConnections\LoadFruits.cs" />
     <Compile Include="DBConnections\LoadSuppliers.cs" />
     <Compile Include="Home.cs">

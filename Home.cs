@@ -20,7 +20,7 @@ namespace SupplyMonitor
     public partial class Home : Form
     {
 
-        List<Cart> order = new List<Cart>();
+        List<Cart> cartList = new List<Cart>();
 
         public Home()
         {
@@ -107,18 +107,23 @@ namespace SupplyMonitor
         private void addToCartBtn_Click(object sender, EventArgs e)
         {
             Cart cart = new Cart();
-            cart.Suplplier = supplierBox.Text;
-            cart.IdSupplier = int.TryParse((supplierBox.SelectedValue.ToString()), out int idsupplier) ? idsupplier : 0;
-            cart.Fruit = typeOfFriutBox.Text;
-            cart.IdFruit = int.TryParse((typeOfFriutBox.SelectedValue.ToString()), out int idfruit) ? idsupplier : 0;
-            cart.Price = int.TryParse(CutTheCrapMadaFaka(priceTextBox), out int price) ? price : 0;
-            cart.Weight = (int)amountNumericUpDown.Value;
-            cart.TotalPrice = int.TryParse(CutTheCrapMadaFaka(totalPriceTextBox), out int totalPrice) ? totalPrice : 0;
-
-            order.Add(cart);
-
-            dataGridView1.Rows.Add(cart.Suplplier, cart.Fruit, cart.Price, cart.Weight, cart.TotalPrice);
-            cart.print();
+            try
+            {
+                cart.Suplplier = supplierBox.Text;
+                cart.IdSupplier = int.TryParse((supplierBox.SelectedValue.ToString()), out int idsupplier) ? idsupplier : 0;
+                cart.Fruit = typeOfFriutBox.Text;
+                cart.IdFruit = int.TryParse((typeOfFriutBox.SelectedValue.ToString()), out int idfruit) ? idfruit : 0;
+                cart.Price = int.TryParse(CutTheCrapMadaFaka(priceTextBox), out int price) ? price : 0;
+                cart.Weight = (int)amountNumericUpDown.Value;
+                cart.TotalPrice = int.TryParse(CutTheCrapMadaFaka(totalPriceTextBox), out int totalPrice) ? totalPrice : 0;
+                cartList.Add(cart);
+                dataGridView1.Rows.Add(cart.Suplplier, cart.Fruit, cart.Price, cart.Weight, cart.TotalPrice);
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show("Ошибка: " + ex.Message);
+            }
+            //cart.print();
         }
 
         /// <summary>
@@ -132,11 +137,18 @@ namespace SupplyMonitor
             return splittedText[0];
         }
 
-
-
-
-
-
-
+        private void orderBtn_Click(object sender, EventArgs e)
+        {
+            InsertFromCartToOrdersHistory insert = new InsertFromCartToOrdersHistory();
+            Task<bool> isInserted = Task.Run(() => insert.insert(cartList));
+            isInserted.ContinueWith(task =>
+            {
+                if (task.Result)
+                {
+                    MessageBox.Show("Товар успешн внесен в БД!");
+                    dataGridView1.Rows.Clear();
+                }
+            }, TaskScheduler.FromCurrentSynchronizationContext());
+        }
     }
 }

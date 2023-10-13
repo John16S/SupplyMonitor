@@ -22,7 +22,11 @@ namespace SupplyMonitor.Models
         public string Fruit { get => fruit; set => fruit = value; }
         public int IdFruit { get => idFruit; set => idFruit = value; }
         public int Price { get => price; set => price = value; }
-        public int Weight { get => weight; set => weight = value; }
+        public int Weight { get => weight; set
+            { if (value != 0)
+                    weight = value;
+                else throw new Exception("Вес не должен быть равен 0!");
+            }  }
         public int TotalPrice { get => totalPrice; set => totalPrice = value; }
 
         public void print()
