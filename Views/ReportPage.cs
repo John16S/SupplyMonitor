@@ -29,12 +29,15 @@ namespace SupplyMonitor.Views
 
             List<Orders> orders = getOrders.getOrders(startDate, endDate);
 
+            int totalPriceInRange = 0;
+
             // Очистите существующие строки в dataGridView
             dataGridView1.Rows.Clear();
 
             // Добавьте каждый заказ в dataGridView
             foreach (Orders order in orders)
             {
+                totalPriceInRange += order.totalPrice;
                 dataGridView1.Rows.Add(
                     order.fruitName,
                     order.supplierName,
@@ -43,6 +46,7 @@ namespace SupplyMonitor.Views
                     order.dateTime.ToShortDateString()
                 );
             }
+            label5.Text = totalPriceInRange.ToString() + " руб.";
         }
 
         private void ReportPage_FormClosing(object sender, FormClosingEventArgs e)
