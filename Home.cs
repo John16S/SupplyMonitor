@@ -150,5 +150,39 @@ namespace SupplyMonitor
                 }
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
+
+        
+
+        private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
+        {
+            if (e.KeyCode == Keys.Delete)
+            {
+                // Проверяем, есть ли выбранная строка
+                foreach (DataGridViewRow selectedRow in dataGridView1.SelectedRows)
+                {
+                    // Получаем значения из выбранной строки в DataGridView
+                    string supplier = selectedRow.Cells["Supplier"].Value.ToString();
+                    string fruit = selectedRow.Cells["FruitType"].Value.ToString();
+                    int price = Convert.ToInt32(selectedRow.Cells["Price"].Value);
+                    int weight = Convert.ToInt32(selectedRow.Cells["Amount"].Value);
+                    int totalPrice = Convert.ToInt32(selectedRow.Cells["TotalPrice"].Value);
+
+                    // Находим соответствующий объект Cart в cartList
+                    Cart removedCart = cartList.FirstOrDefault(cart =>
+                         cart.Suplplier == supplier && cart.Fruit == fruit && cart.Price == price
+                         && cart.Weight == weight && cart.TotalPrice == totalPrice);
+
+
+                    if (removedCart != null)
+                    {
+                        // Удаляем соответствующий объект Cart из cartList
+                        cartList.Remove(removedCart);
+                    }
+
+                    // Удаляем выбранную строку
+                    dataGridView1.Rows.Remove(selectedRow);
+                }
+            }
+        }
     }
 }

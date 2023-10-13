@@ -22,7 +22,7 @@ namespace SupplyMonitor.DBConnections
             {
                 ConnectionStringSettings conString;
                 conString = ConfigurationManager.ConnectionStrings["connectionString"];
-                connection.ConnectionString = conString.ConnectionString + "asd";
+                connection.ConnectionString = conString.ConnectionString;
                 connection.Open();
 
                 for (int i = 0; i < cartList.Count; i++)
