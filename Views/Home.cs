@@ -42,6 +42,9 @@ namespace SupplyMonitor
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
+        /// <summary>
+        /// Считает общую сумму фрукта по весу
+        /// </summary>
         private void RecalculateTotalPrice()
         {
             // Получаем текст из priceTextBox и Разделяем строку по пробелу, то есть из "120 р/кг" берем "120"
@@ -59,16 +62,25 @@ namespace SupplyMonitor
             }
         }
 
+        /// <summary>
+        /// Обработчик при изменение цены фрукта
+        /// </summary>
         private void priceTextBox_TextChanged(object sender, EventArgs e)
         {
             RecalculateTotalPrice();
         }
 
+        /// <summary>
+        /// Обработчик при изменение веса
+        /// </summary>
         private void amountNumericUpDown_ValueChanged(object sender, EventArgs e)
         {
             RecalculateTotalPrice();
         }
 
+        /// <summary>
+        /// Обработчик при выобре поставщика
+        /// </summary>
         private void supplierBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             // Получаем выбранного поставщика
@@ -93,6 +105,9 @@ namespace SupplyMonitor
             }
         }
 
+        /// <summary>
+        /// Обработчик при выборе типа фрукты
+        /// </summary>
         private void typeOfFriutBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             priceTextBox.Clear();
@@ -105,17 +120,20 @@ namespace SupplyMonitor
             }
         }
 
+        /// <summary>
+        /// Кнопка добавление в Корзину
+        /// </summary>
         private void addToCartBtn_Click(object sender, EventArgs e)
         {
             Cart cart = new Cart();
             try
             {
-                cart.Suplplier = supplierBox.Text;
+                cart.Suplplier = supplierBox.Text.ToString();
                 cart.IdSupplier = int.TryParse((supplierBox.SelectedValue.ToString()), out int idsupplier) ? idsupplier : 0;
                 cart.Fruit = typeOfFriutBox.Text;
                 cart.IdFruit = int.TryParse((typeOfFriutBox.SelectedValue.ToString()), out int idfruit) ? idfruit : 0;
                 cart.Price = int.TryParse(CutTheUnnecesarryPart(priceTextBox), out int price) ? price : 0;
-                cart.Weight = (int)amountNumericUpDown.Value;
+                cart.Weight = (amountNumericUpDown.Value != 0) ? (int)amountNumericUpDown.Value : throw new Exception("Вес не должен быть равен 0!");
                 cart.TotalPrice = int.TryParse(CutTheUnnecesarryPart(totalPriceTextBox), out int totalPrice) ? totalPrice : 0;
                 cartList.Add(cart);
                 dataGridView1.Rows.Add(cart.Suplplier, cart.Fruit, cart.Price, cart.Weight, cart.TotalPrice);
@@ -130,14 +148,15 @@ namespace SupplyMonitor
         /// <summary>
         /// Обрезает всю не нужную часть
         /// </summary>
-        /// <param name="textBox"></param>
-        /// <returns>TextBox</returns>
         private string CutTheUnnecesarryPart(TextBox textBox)
         {
             string[] splittedText = (textBox.Text).Split(' ');
             return splittedText[0];
         }
 
+        /// <summary>
+        /// Нажатие кнопки заказать, вненсение данных в БД
+        /// </summary>
         private void orderBtn_Click(object sender, EventArgs e)
         {
             InsertFromCartToOrdersHistory insert = new InsertFromCartToOrdersHistory();
@@ -152,8 +171,9 @@ namespace SupplyMonitor
             }, TaskScheduler.FromCurrentSynchronizationContext());
         }
 
-        
-
+        /// <summary>
+        /// Удаление элементов из корзины (и из списка cartList)
+        /// </summary>
         private void dataGridView1_KeyDown(object sender, KeyEventArgs e)
         {
             if (e.KeyCode == Keys.Delete)
@@ -186,14 +206,19 @@ namespace SupplyMonitor
             }
         }
 
+        /// <summary>
+        /// Кнопка отчета
+        /// </summary>
         private void reportBtn_Click(object sender, EventArgs e)
         {
-
             ReportPage reportPage = new ReportPage(this);
             Hide();
             reportPage.Show();
         }
 
+        /// <summary>
+        /// Закрытие приложения
+        /// </summary>
         private void exitBtn_Click(object sender, EventArgs e)
         {
             Application.Exit();

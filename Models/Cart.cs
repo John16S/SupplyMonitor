@@ -1,11 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Windows.Forms;
-
-namespace SupplyMonitor.Models
+﻿namespace SupplyMonitor.Models
 {
     internal class Cart
     {
@@ -22,17 +15,13 @@ namespace SupplyMonitor.Models
         public string Fruit { get => fruit; set => fruit = value; }
         public int IdFruit { get => idFruit; set => idFruit = value; }
         public int Price { get => price; set => price = value; }
-        public int Weight { get => weight; set
-            { if (value != 0)
-                    weight = value;
-                else throw new Exception("Вес не должен быть равен 0!");
-            }  }
+        public int Weight { get => weight; set => weight = value; }
         public int TotalPrice { get => totalPrice; set => totalPrice = value; }
 
-        public void print()
+        /*public void print()
         {
             MessageBox.Show("IdSupplier: " + idSupplier + "\n" +
                             "IdFruit: " + idFruit + "\n");
-        }
+        }*/
     }
 }

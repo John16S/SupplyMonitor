@@ -23,10 +23,10 @@ namespace SupplyMonitor.Views
 
         private void SearchBtn_Click(object sender, EventArgs e)
         {
-            GetOrders getOrders = new GetOrders();
             string startDate = dateTimeFrom.Value.ToString("yyyy-MM-dd");
             string endDate = dateTimeTo.Value.ToString("yyyy-MM-dd");
 
+            GetOrders getOrders = new GetOrders();
             List<Orders> orders = getOrders.getOrders(startDate, endDate);
 
             int totalPriceInRange = 0;
